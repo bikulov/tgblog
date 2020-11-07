@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="assets/main.css" media="all">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@400;500&display=swap" rel="stylesheet"> 
+</head>
+<body>
+    <div class="header-wrapper">
+        <div class="header">
+            {{title}}
+        </div>
+    </div>
+    <div class="content-wrapper">
+        <div class="content">
+        {% for post in posts %}
+            <div class="post">
+                <div class="meta">
+                    <span class="author">{{author}}</span>
+                    <span class="date">{{post.date.strftime("%Y-%m-%d %H:%M")}}</span>
+                </div>
+                <div class="text">{{post.message}}</div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+    <div class="footer-wrapper">
+        <div class="footer">
+            Все права защищены, {{title}}. 2020
+        </div>
+    </div>
+</body>
+</html>
+
