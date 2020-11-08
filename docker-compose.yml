@@ -1,6 +1,7 @@
 version: "3.4"
 services:
-  web:
+  nginx:
+    container_name: nginx
     image: nginx:alpine
     volumes:
       - tgblog-html:/usr/share/nginx/html
@@ -8,16 +9,17 @@ services:
       - "8080:80"
 
   tgblog:
+    container_name: tgblog
     build: .
     volumes:
       - tgblog-html:/usr/share/nginx/html
       - tgblog-data:/data
     environment:
-      - TELEGRAM_TOKEN=1444624203:AAF-X6pIq6Jm4TmI8KeTiaPWUiXdDEkIm_c
-      - CHAT_ID=-1001382641583
-      - AUTHOR=Dmitry Bikulov
-      - TITLE=ksar.dev channel
-      - SLEEP=10
+      - TELEGRAM_TOKEN=${TELEGRAM_TOKEN}
+      - CHAT_ID=${CHAT_ID}
+      - AUTHOR=${AUTHOR}
+      - TITLE=${TITLE}
+      - SLEEP=${SLEEP}
 
 volumes:
   tgblog-data:
