@@ -5,7 +5,7 @@ from update import Update
 
 
 class Database:
-    def __init__(self, db_file=":memory:", echo=False):
+    def __init__(self, db_file, echo=False):
         self.engine = create_engine(f"sqlite:///{db_file}", echo=echo)
         Update.metadata.create_all(self.engine)
         self.session = sessionmaker(bind=self.engine)()
